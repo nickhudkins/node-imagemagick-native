@@ -152,10 +152,10 @@ bool ReadImageMagick(Magick::Image *image, Magick::Blob srcBlob, std::string src
         context->error = err.what();
         return false;
     }
-    catch (...) {
-        context->error = std::string("unhandled error");
-        return false;
-    }
+    // catch (...) {
+    //     context->error = std::string("unhandled error");
+    //     return false;
+    // }
     return true;
 }
 
@@ -319,10 +319,10 @@ void DoConvert(uv_work_t* req) {
                 context->error = message;
                 return;
             }
-            catch (...) {
-                context->error = std::string("unhandled error");
-                return;
-            }
+            // catch (...) {
+            //     context->error = std::string("unhandled error");
+            //     return;
+            // }
 
             if ( strcmp ( gravity, "None" ) != 0 ) {
                 // limit canvas size to cropGeometry
@@ -359,10 +359,10 @@ void DoConvert(uv_work_t* req) {
                 context->error = message;
                 return;
             }
-            catch (...) {
-                context->error = std::string("unhandled error");
-                return;
-            }
+            // catch (...) {
+            //     context->error = std::string("unhandled error");
+            //     return;
+            // }
         }
         else if ( strcmp ( resizeStyle, "fill" ) == 0 ) {
             // change aspect ratio and fill specified size
@@ -379,10 +379,10 @@ void DoConvert(uv_work_t* req) {
                 context->error = message;
                 return;
             }
-            catch (...) {
-                context->error = std::string("unhandled error");
-                return;
-            }
+            // catch (...) {
+            //     context->error = std::string("unhandled error");
+            //     return;
+            // }
         }
         else {
             context->error = std::string("resizeStyle not supported");
@@ -420,10 +420,10 @@ void DoConvert(uv_work_t* req) {
         context->error = message;
         return;
     }
-    catch (...) {
-        context->error = std::string("unhandled error");
-        return;
-    }
+    // catch (...) {
+    //     context->error = std::string("unhandled error");
+    //     return;
+    // }
     context->dstBlob = dstBlob;
 }
 
@@ -595,9 +595,9 @@ void DoIdentify(uv_work_t* req) {
             context->error = message;
         }
     }
-    catch (...) {
-        context->error = std::string("unhandled error");
-    }
+    // catch (...) {
+    //     context->error = std::string("unhandled error");
+    // }
     if(!context->error.empty()) {
         return;
     }
@@ -770,9 +770,9 @@ NAN_METHOD(GetConstPixels) {
             return Nan::ThrowError(message.c_str());
         }
     }
-    catch (...) {
-        return Nan::ThrowError("unhandled error");
-    }
+    // catch (...) {
+    //     return Nan::ThrowError("unhandled error");
+    // }
 
     size_t w = image.columns();
     size_t h = image.rows();
@@ -845,9 +845,9 @@ NAN_METHOD(QuantizeColors) {
             return Nan::ThrowError(message.c_str());
         }
     }
-    catch (...) {
-        return Nan::ThrowError("unhandled error");
-    }
+    // catch (...) {
+    //     return Nan::ThrowError("unhandled error");
+    // }
 
     ssize_t rows = 196; ssize_t columns = 196;
 
